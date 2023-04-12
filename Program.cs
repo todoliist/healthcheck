@@ -1,5 +1,7 @@
 using HealthCheckDemo;
 using HealthChecks.UI.Client;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,8 +14,22 @@ builder.Services.AddSwaggerGen();
 
 builder.Services
     .AddHealthChecks()
-    .AddSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
-    .AddCheck<CustomHealthCheck>(nameof(CustomHealthCheck));
+    .AddSqlServer(
+        connectionString: builder.Configuration.GetConnectionString("DefaultConnection"), name: "db check",
+        failureStatus: HealthStatus.Unhealthy
+        )
+    .AddCheck<CustomHealthCheck>("custom check");
+
+//adding healthchecks UI
+builder.Services.AddHealthChecksUI(opt =>
+{
+    opt.SetEvaluationTimeInSeconds(15); //time in seconds between check
+    opt.MaximumHistoryEntriesPerEndpoint(60); //maximum history of checks
+    opt.SetApiMaxActiveRequests(1); //api requests concurrency
+
+    opt.AddHealthCheckEndpoint("default api", "/health"); //map health check api
+})
+.AddInMemoryStorage();
 
 var app = builder.Build();
 
@@ -28,12 +44,11 @@ app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
-
-app.MapHealthChecks("/health", new()
+app.MapHealthChecks("/health", new HealthCheckOptions()
 {
+    Predicate = _ => true,
     ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
 });
-
+app.MapHealthChecksUI();
 app.MapControllers();
-
 app.Run();
