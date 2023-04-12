@@ -1,4 +1,3 @@
-using HealthCheckDemo;
 using HealthChecks.UI.Client;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
@@ -14,12 +13,10 @@ builder.Services.AddSwaggerGen();
 
 builder.Services
     .AddHealthChecks()
-    .AddSqlServer(
-        connectionString: builder.Configuration.GetConnectionString("DefaultConnection"), name: "db check",
-        failureStatus: HealthStatus.Unhealthy
-        )
-    .AddCheck<CustomHealthCheck>("custom check");
-
+    .AddCheck("Merrick Tenant DB Check",
+        new SqlConnectionHealthCheck(builder.Configuration.GetConnectionString("DefaultConnection")),
+        HealthStatus.Unhealthy,
+        new string[] { "SqlServer" });
 //adding healthchecks UI
 builder.Services.AddHealthChecksUI(opt =>
 {
