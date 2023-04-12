@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "fja1bIQ3CgeXT3UMZD3IjHqvoZ8VXD1xRCdZdqlMizdiWUdlGePJnq/sRFQLVPiKqe1NYg04FMhF5ELQOf32mw==",
+  "dgSpecHash": "ARyOZ9dFvM32QcPAz+QmBJVqvmSnQoI1XkuSaUiyN4tAQ5YuWYxu9ZHw8+DyUHQmuAwqRl/BuuMCpXexS/0N/A==",
   "success": true,
   "projectFilePath": "C:\\Users\\sss1009\\OneDrive - P2ES Holdings, Inc\\Desktop\\healthcheck\\healthcheck.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\sss1009\\.nuget\\packages\\aspnetcore.healthchecks.publisher.applicationinsights\\6.0.2\\aspnetcore.healthchecks.publisher.applicationinsights.6.0.2.nupkg.sha512",
     "C:\\Users\\sss1009\\.nuget\\packages\\aspnetcore.healthchecks.sqlserver\\6.0.2\\aspnetcore.healthchecks.sqlserver.6.0.2.nupkg.sha512",
     "C:\\Users\\sss1009\\.nuget\\packages\\aspnetcore.healthchecks.ui\\6.0.5\\aspnetcore.healthchecks.ui.6.0.5.nupkg.sha512",
     "C:\\Users\\sss1009\\.nuget\\packages\\aspnetcore.healthchecks.ui.client\\6.0.5\\aspnetcore.healthchecks.ui.client.6.0.5.nupkg.sha512",
@@ -17,6 +18,7 @@
     "C:\\Users\\sss1009\\.nuget\\packages\\identitymodel\\4.1.0\\identitymodel.4.1.0.nupkg.sha512",
     "C:\\Users\\sss1009\\.nuget\\packages\\identitymodel.oidcclient\\3.1.2\\identitymodel.oidcclient.3.1.2.nupkg.sha512",
     "C:\\Users\\sss1009\\.nuget\\packages\\kubernetesclient\\4.0.26\\kubernetesclient.4.0.26.nupkg.sha512",
+    "C:\\Users\\sss1009\\.nuget\\packages\\microsoft.applicationinsights\\2.20.0\\microsoft.applicationinsights.2.20.0.nupkg.sha512",
     "C:\\Users\\sss1009\\.nuget\\packages\\microsoft.aspnetcore.diagnostics.healthchecks\\2.2.0\\microsoft.aspnetcore.diagnostics.healthchecks.2.2.0.nupkg.sha512",
     "C:\\Users\\sss1009\\.nuget\\packages\\microsoft.aspnetcore.http.abstractions\\2.2.0\\microsoft.aspnetcore.http.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\sss1009\\.nuget\\packages\\microsoft.aspnetcore.http.features\\2.2.0\\microsoft.aspnetcore.http.features.2.2.0.nupkg.sha512",

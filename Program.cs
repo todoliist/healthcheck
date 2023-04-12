@@ -3,9 +3,7 @@ using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 
 var builder = WebApplication.CreateBuilder(args);
-
 // Add services to the container.
-
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -16,7 +14,8 @@ builder.Services
     .AddCheck("Merrick Tenant DB Check",
         new SqlConnectionHealthCheck(builder.Configuration.GetConnectionString("DefaultConnection")),
         HealthStatus.Unhealthy,
-        new string[] { "SqlServer" });
+        new string[] { "SqlServer" })
+    .AddApplicationInsightsPublisher(instrumentationKey: "ead27f2a-4f8f-46a3-8c5d-ab81fd07fe99");
 //adding healthchecks UI
 builder.Services.AddHealthChecksUI(opt =>
 {

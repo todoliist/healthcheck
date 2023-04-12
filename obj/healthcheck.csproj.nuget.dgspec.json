@@ -56,6 +56,10 @@
               "target": "Package",
               "version": "[6.0.5, )"
             },
+            "AspNetcore.HealthChecks.Publisher.ApplicationInsights": {
+              "target": "Package",
+              "version": "[6.0.2, )"
+            },
             "Microsoft.AspNetCore.Diagnostics.HealthChecks": {
               "target": "Package",
               "version": "[2.2.0, )"

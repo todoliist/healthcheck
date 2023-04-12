@@ -12,12 +12,25 @@
           "AspNetCore.HealthChecks.UI": "6.0.5",
           "AspNetCore.HealthChecks.UI.Client": "6.0.5",
           "AspNetCore.HealthChecks.UI.InMemory.Storage": "6.0.5",
+          "AspNetCore.HealthChecks.Publisher.ApplicationInsights": "6.0.2",
           "Microsoft.AspNetCore.Diagnostics.HealthChecks": "2.2.0",
           "Microsoft.AspNetCore.OpenApi": "7.0.0",
           "Swashbuckle.AspNetCore": "6.4.0"
         },
         "runtime": {
           "healthcheck.dll": {}
+        }
+      },
+      "AspNetCore.HealthChecks.Publisher.ApplicationInsights/6.0.2": {
+        "dependencies": {
+          "Microsoft.ApplicationInsights": "2.20.0",
+          "Microsoft.Extensions.Diagnostics.HealthChecks": "6.0.7"
+        },
+        "runtime": {
+          "lib/net6.0/HealthChecks.Publisher.ApplicationInsights.dll": {
+            "assemblyVersion": "6.0.2.0",
+            "fileVersion": "6.0.2.0"
+          }
         }
       },
       "AspNetCore.HealthChecks.SqlServer/6.0.2": {
@@ -195,6 +208,17 @@
           "lib/net5.0/KubernetesClient.dll": {
             "assemblyVersion": "4.0.0.0",
             "fileVersion": "4.0.26.26237"
+          }
+        }
+      },
+      "Microsoft.ApplicationInsights/2.20.0": {
+        "dependencies": {
+          "System.Diagnostics.DiagnosticSource": "6.0.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.ApplicationInsights.dll": {
+            "assemblyVersion": "2.20.0.103",
+            "fileVersion": "2.20.0.103"
           }
         }
       },
@@ -1206,6 +1230,13 @@
       "serviceable": false,
       "sha512": ""
     },
+    "AspNetCore.HealthChecks.Publisher.ApplicationInsights/6.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-5p8sYaxCnuqNz2/Ymtm32aAWw3TSTQZhby5ef5H4naQYqOVAot/BB1IGjLOMy+ScltZfSSuWy/0arqs31tVNug==",
+      "path": "aspnetcore.healthchecks.publisher.applicationinsights/6.0.2",
+      "hashPath": "aspnetcore.healthchecks.publisher.applicationinsights.6.0.2.nupkg.sha512"
+    },
     "AspNetCore.HealthChecks.SqlServer/6.0.2": {
       "type": "package",
       "serviceable": true,
@@ -1296,6 +1327,13 @@
       "sha512": "sha512-iOz6dgDBKBxDeQAKBUIuXS+D7M0FL5eKwoFuP5dBQVocXaJee2sgMgIxnpKDEbXqUiUUGLwkyEFhUqw72Gg6Tg==",
       "path": "kubernetesclient/4.0.26",
       "hashPath": "kubernetesclient.4.0.26.nupkg.sha512"
+    },
+    "Microsoft.ApplicationInsights/2.20.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-mb+EC5j06Msn5HhKrhrsMAst6JxvYUnphQMGY2cixCabgGAO3q79Y8o/p1Zce1Azgd1IVkRKAMzAV4vDCbXOqA==",
+      "path": "microsoft.applicationinsights/2.20.0",
+      "hashPath": "microsoft.applicationinsights.2.20.0.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Diagnostics.HealthChecks/2.2.0": {
       "type": "package",

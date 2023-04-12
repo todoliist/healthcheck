@@ -2,6 +2,23 @@
   "version": 3,
   "targets": {
     "net7.0": {
+      "AspNetCore.HealthChecks.Publisher.ApplicationInsights/6.0.2": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.ApplicationInsights": "2.20.0",
+          "Microsoft.Extensions.Diagnostics.HealthChecks": "6.0.2"
+        },
+        "compile": {
+          "lib/net6.0/HealthChecks.Publisher.ApplicationInsights.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/HealthChecks.Publisher.ApplicationInsights.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "AspNetCore.HealthChecks.SqlServer/6.0.2": {
         "type": "package",
         "dependencies": {
@@ -248,6 +265,22 @@
         "runtime": {
           "lib/net5.0/KubernetesClient.dll": {
             "related": ".xml"
+          }
+        }
+      },
+      "Microsoft.ApplicationInsights/2.20.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Diagnostics.DiagnosticSource": "5.0.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.ApplicationInsights.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.ApplicationInsights.dll": {
+            "related": ".pdb;.xml"
           }
         }
       },
@@ -2111,6 +2144,20 @@
     }
   },
   "libraries": {
+    "AspNetCore.HealthChecks.Publisher.ApplicationInsights/6.0.2": {
+      "sha512": "5p8sYaxCnuqNz2/Ymtm32aAWw3TSTQZhby5ef5H4naQYqOVAot/BB1IGjLOMy+ScltZfSSuWy/0arqs31tVNug==",
+      "type": "package",
+      "path": "aspnetcore.healthchecks.publisher.applicationinsights/6.0.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "aspnetcore.healthchecks.publisher.applicationinsights.6.0.2.nupkg.sha512",
+        "aspnetcore.healthchecks.publisher.applicationinsights.nuspec",
+        "icon.png",
+        "lib/net6.0/HealthChecks.Publisher.ApplicationInsights.dll",
+        "lib/net6.0/HealthChecks.Publisher.ApplicationInsights.xml"
+      ]
+    },
     "AspNetCore.HealthChecks.SqlServer/6.0.2": {
       "sha512": "Af7ws27DnZZ4bKCiEREm7emSAKEtIiYirEAkI0ixFgK1fwJ99jmMnPC+kU01zfqn3FyCO/gZOUO7WbyVvTPpFg==",
       "type": "package",
@@ -2325,6 +2372,27 @@
         "lib/netstandard2.0/KubernetesClient.xml",
         "lib/netstandard2.1/KubernetesClient.dll",
         "lib/netstandard2.1/KubernetesClient.xml"
+      ]
+    },
+    "Microsoft.ApplicationInsights/2.20.0": {
+      "sha512": "mb+EC5j06Msn5HhKrhrsMAst6JxvYUnphQMGY2cixCabgGAO3q79Y8o/p1Zce1Azgd1IVkRKAMzAV4vDCbXOqA==",
+      "type": "package",
+      "path": "microsoft.applicationinsights/2.20.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "icon.png",
+        "lib/net452/Microsoft.ApplicationInsights.dll",
+        "lib/net452/Microsoft.ApplicationInsights.pdb",
+        "lib/net452/Microsoft.ApplicationInsights.xml",
+        "lib/net46/Microsoft.ApplicationInsights.dll",
+        "lib/net46/Microsoft.ApplicationInsights.pdb",
+        "lib/net46/Microsoft.ApplicationInsights.xml",
+        "lib/netstandard2.0/Microsoft.ApplicationInsights.dll",
+        "lib/netstandard2.0/Microsoft.ApplicationInsights.pdb",
+        "lib/netstandard2.0/Microsoft.ApplicationInsights.xml",
+        "microsoft.applicationinsights.2.20.0.nupkg.sha512",
+        "microsoft.applicationinsights.nuspec"
       ]
     },
     "Microsoft.AspNetCore.Diagnostics.HealthChecks/2.2.0": {
@@ -6294,6 +6362,7 @@
       "AspNetCore.HealthChecks.UI >= 6.0.5",
       "AspNetCore.HealthChecks.UI.Client >= 6.0.5",
       "AspNetCore.HealthChecks.UI.InMemory.Storage >= 6.0.5",
+      "AspNetcore.HealthChecks.Publisher.ApplicationInsights >= 6.0.2",
       "Microsoft.AspNetCore.Diagnostics.HealthChecks >= 2.2.0",
       "Microsoft.AspNetCore.OpenApi >= 7.0.0",
       "Swashbuckle.AspNetCore >= 6.4.0"
@@ -6353,6 +6422,10 @@
           "AspNetCore.HealthChecks.UI.InMemory.Storage": {
             "target": "Package",
             "version": "[6.0.5, )"
+          },
+          "AspNetcore.HealthChecks.Publisher.ApplicationInsights": {
+            "target": "Package",
+            "version": "[6.0.2, )"
           },
           "Microsoft.AspNetCore.Diagnostics.HealthChecks": {
             "target": "Package",
