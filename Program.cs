@@ -12,6 +12,7 @@ builder.Services.AddSwaggerGen();
 builder.Services
     .AddHealthChecks()
     .AddCheck("Merrick Tenant DB Check",
+        //localhost connectionString:"Data Source=localhost,1433;Initial Catalog=master;User Id=sa;Password=MyV3ryStrong@Passw0rd"
         new SqlConnectionHealthCheck(builder.Configuration.GetConnectionString("DefaultConnection")),
         HealthStatus.Unhealthy,
         new string[] { "SqlServer" })
