@@ -46,6 +46,11 @@ app.MapHealthChecks("/health", new HealthCheckOptions()
     Predicate = _ => true,
     ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
 });
+app.MapHealthChecks("/apphealth", new HealthCheckOptions()
+{
+    Predicate = _ => true,
+    ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+});
 app.MapHealthChecksUI();
 app.MapControllers();
 app.Run();
