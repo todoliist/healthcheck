@@ -41,11 +41,7 @@ app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
-app.MapHealthChecks("/health", new HealthCheckOptions()
-{
-    Predicate = _ => true,
-    ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
-});
+app.MapHealthChecks("/health");
 app.MapHealthChecks("/apphealth", new HealthCheckOptions()
 {
     Predicate = _ => true,
