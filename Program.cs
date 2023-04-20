@@ -11,11 +11,14 @@ builder.Services.AddSwaggerGen();
 
 builder.Services
     .AddHealthChecks()
-    .AddCheck("Merrick Tenant DB Check",
-        //localhost connectionString:"Data Source=localhost,1433;Initial Catalog=master;User Id=sa;Password=MyV3ryStrong@Passw0rd"
-        new SqlConnectionHealthCheck(builder.Configuration.GetConnectionString("DefaultConnection")),
-        HealthStatus.Unhealthy,
-        new string[] { "SqlServer" })
+    .AddCheck("TimDB",
+    new DbHealthCheck("Server=tcp:timdbserver.database.windows.net,1433;Initial Catalog=timsql;Persist Security Info=False;User ID=CloudSA0b4fc139;Password=Welcome54321!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"),
+    HealthStatus.Unhealthy,
+    new string[] { "sqlserver" })
+    .AddCheck("MerrickTenantDB",
+    new DbHealthCheck("Data Source=tcp:10.216.116.127,1433;Initial Catalog=Mer01_ArcSarcDev1_Procount;User ID=sa;Password=password$1;MultipleActiveResultSets=False;Connection Timeout=10;ConnectRetryCount=3;ConnectRetryInterval=5;Encrypt=false;TrustServerCertificate=true;"),
+    HealthStatus.Unhealthy,
+    new string[] { "sqlserver" })
     .AddApplicationInsightsPublisher(instrumentationKey: "ead27f2a-4f8f-46a3-8c5d-ab81fd07fe99");
 //adding healthchecks UI
 builder.Services.AddHealthChecksUI(opt =>
@@ -41,10 +44,15 @@ app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
-app.MapHealthChecks("/health");
 app.MapHealthChecks("/apphealth", new HealthCheckOptions()
 {
-    Predicate = _ => true,
+    Predicate = (check) => !check.Tags.Contains("sqlserver"),
+    ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+});
+
+app.MapHealthChecks("/dbhealth", new HealthCheckOptions()
+{
+    Predicate = (check) => check.Tags.Contains("sqlserver"),
     ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
 });
 app.MapHealthChecksUI();

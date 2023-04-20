@@ -3,7 +3,7 @@ using System.Data.Common;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 
-public class SqlConnectionHealthCheck : IHealthCheck
+public class DbHealthCheck : IHealthCheck
 {
     private const string DefaultTestQuery = "Select 1";
 
@@ -11,12 +11,12 @@ public class SqlConnectionHealthCheck : IHealthCheck
 
     public string TestQuery { get; }
 
-    public SqlConnectionHealthCheck(string connectionString)
+    public DbHealthCheck(string connectionString)
         : this(connectionString, testQuery: DefaultTestQuery)
     {
     }
 
-    public SqlConnectionHealthCheck(string connectionString, string testQuery)
+    public DbHealthCheck(string connectionString, string testQuery)
     {
         ConnectionString = connectionString ?? throw new ArgumentNullException(nameof(connectionString));
         TestQuery = testQuery;
