@@ -1,5 +1,6 @@
-// Sample SQL Connection Health Check
 using System.Data.Common;
+using Microsoft.ApplicationInsights;
+using Microsoft.ApplicationInsights.Extensibility;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 
@@ -26,6 +27,10 @@ public class DbHealthCheck : IHealthCheck
     {
         using (var connection = new SqlConnection(ConnectionString))
         {
+            TelemetryClient tclient = new TelemetryClient();
+            var telemetryKey = "ead27f2a-4f8f-46a3-8c5d-ab81fd07fe99";
+            TelemetryConfiguration.Active.InstrumentationKey = telemetryKey;
+            tclient.InstrumentationKey = telemetryKey;
             try
             {
                 await connection.OpenAsync(cancellationToken);
@@ -36,10 +41,22 @@ public class DbHealthCheck : IHealthCheck
                     command.CommandText = TestQuery;
 
                     await command.ExecuteNonQueryAsync(cancellationToken);
+
+                    tclient.TrackEvent("DB Condition", new Dictionary<string, string>
+                 {
+                     {"HealthCheckMsgs", "DB is Healthy"},
+                     {"DB", context.Registration.Name}
+                 });
                 }
             }
             catch (DbException ex)
             {
+                tclient.TrackEvent("DB Condition", new Dictionary<string, string>
+                 {
+                     {"HealthCheckMsgs", ex.Message},
+                     {"DB", context.Registration.Name}
+                 });
+
                 return new HealthCheckResult(status: context.Registration.FailureStatus, exception: ex);
             }
         }
