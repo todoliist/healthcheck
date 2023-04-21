@@ -42,7 +42,7 @@ public class DbHealthCheck : IHealthCheck
 
                     await command.ExecuteNonQueryAsync(cancellationToken);
 
-                    tclient.TrackEvent("DB Condition", new Dictionary<string, string>
+                    tclient.TrackEvent(context.Registration.Name, new Dictionary<string, string>
                  {
                      {"HealthCheckMsgs", "DB is Healthy"},
                      {"DB", context.Registration.Name}
@@ -51,7 +51,7 @@ public class DbHealthCheck : IHealthCheck
             }
             catch (DbException ex)
             {
-                tclient.TrackEvent("DB Condition", new Dictionary<string, string>
+                tclient.TrackEvent(context.Registration.Name, new Dictionary<string, string>
                  {
                      {"HealthCheckMsgs", ex.Message},
                      {"DB", context.Registration.Name}
